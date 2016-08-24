@@ -106,16 +106,7 @@
         <!--android:elevation="@dimen/fab_elevation"-->
         <!--android:contentDescription="@string/action_share" />-->
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_share"
-        android:layout_gravity="bottom|end|right"
-        fab:layout_anchorGravity="bottom|end"
-        fab:fab_colorRipple="@color/ripple"
-        android:layout_margin="16dp"
-        />
+
 
 
 </com.example.xyzreader.ui.DrawInsetsFrameLayout>

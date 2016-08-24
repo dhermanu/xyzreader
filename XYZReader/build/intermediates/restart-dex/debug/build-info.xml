@@ -4,23 +4,49 @@
     api-level="21"
     density="xxhdpi"
     format="7"
-    timestamp="2258348792193"
+    timestamp="2961856206051"
     token="6315531108547260862" >
 
     <task
         name="javac"
-        duration="0" />
+        duration="981" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="0" />
+        duration="62" />
     <task
         name="verifier"
-        duration="0" />
+        duration="3" />
 
-    <build timestamp="2258348792193" />
+    <artifact
+        location="/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/build/intermediates/transforms/dex/debug/folders/1000/5/slice_3/classes.dex"
+        type="DEX" />
+
+    <build timestamp="2409132967105" >
+        <artifact
+            location="/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/build/intermediates/res/resources-debug.ap_"
+            type="RESOURCES" />
+    </build>
+    <build
+        timestamp="2770394765150"
+        verifier="METHOD_ADDED" >
+        <artifact
+            location="/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/build/intermediates/res/resources-debug.ap_"
+            type="RESOURCES" />
+        <artifact
+            location="/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/build/intermediates/transforms/dex/debug/folders/1000/5/slice_7/classes.dex"
+            type="DEX" />
+        <artifact
+            location="/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/build/intermediates/transforms/dex/debug/folders/1000/5/slice_0/classes.dex"
+            type="DEX" />
+    </build>
+    <build timestamp="2961856206051" >
+        <artifact
+            location="/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/build/intermediates/transforms/dex/debug/folders/1000/5/slice_3/classes.dex"
+            type="DEX" />
+    </build>
     <build timestamp="27138768967422" >
         <artifact
             location="/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/build/outputs/apk/XYZReader-debug.apk"
