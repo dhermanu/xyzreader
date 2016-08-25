@@ -1,12 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" >
-
-    <item
-        jar="/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        revision="22.0.1"
-        sha1="42963a8e5d31bbb38adf8ac436576de133ed5d21">
-        <dex dex="/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_926b63e64b21c70bb429b600c4c62f7b2bafcfc5/classes.dex" />
-    </item>
-
-</items>
+<items version="2" />

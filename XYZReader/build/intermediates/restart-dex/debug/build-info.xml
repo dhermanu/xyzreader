@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<instant-run
+    abi="x86"
+    api-level="21"
+    density="xxhdpi"
+    format="7"
+    timestamp="37310303174300"
+    token="6315531108547260862"
+    verifier="COMPATIBLE" >
+
+    <task
+        name="javac"
+        duration="1117" />
+    <task
+        name="instant-run-dex"
+        duration="1046" />
+    <task
+        name="instant-run-transform"
+        duration="72" />
+    <task
+        name="verifier"
+        duration="4" />
+
+    <artifact
+        location="/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/build/intermediates/reload-dex/debug/classes.dex"
+        type="RELOAD_DEX" />
+
+    <build timestamp="36089368074082" >
+        <artifact
+            location="/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/build/outputs/apk/XYZReader-debug.apk"
+            type="MAIN" />
+    </build>
+    <build timestamp="37277753126150" >
+        <artifact
+            location="/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/build/intermediates/transforms/dex/debug/folders/1000/5/slice_3/classes.dex"
+            type="DEX" />
+    </build>
+    <build
+        timestamp="37310303174300"
+        verifier="COMPATIBLE" >
+        <artifact
+            location="/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/build/intermediates/reload-dex/debug/classes.dex"
+            type="RELOAD_DEX" />
+    </build>
+
+</instant-run>

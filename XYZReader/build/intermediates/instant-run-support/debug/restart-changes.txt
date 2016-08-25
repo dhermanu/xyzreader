@@ -1,0 +1,1 @@
+CHANGED,/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/build/intermediates/transforms/instantRun/debug/folders/1/5/main/com/example/xyzreader/ui/ArticleDetailFragment.class
