@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="Theme.Main" parent="Theme.Bacon">
+        <item name="android:windowContentTransitions">true</item>
+        <item name="android:windowReenterTransition">@android:transition/slide_left</item>
+    </style>
+
+    <style name="Theme.Detail" parent="Theme.Bacon">
+        <item name="android:windowContentTransitions">true</item>
+    </style>
+
+    <style name="Theme.Bacon.Detail">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
 </resources>

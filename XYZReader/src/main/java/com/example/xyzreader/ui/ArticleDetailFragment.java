@@ -144,7 +144,7 @@ public class ArticleDetailFragment extends Fragment implements
             mPhotoView.setTransitionName(getString(R.string.fragment_transition_name)
                     + String.valueOf(mPosition));
         }
-        
+
         mStatusBarColorDrawable = new ColorDrawable(0);
 
         bindViews();
