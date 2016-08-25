@@ -20,7 +20,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:scaleType="centerCrop"
-                android:background="@drawable/photo_background_protection"/>
+                android:background="@drawable/photo_background_protection"
+                android:transitionName="transitionphoto"/>
 
             <com.example.xyzreader.ui.MaxWidthLinearLayout
                 android:orientation="vertical"
