@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -132,11 +133,11 @@ public class ArticleListActivity extends ActionBarActivity implements
                     DynamicHeightNetworkImageView thumbnailView
                             = (DynamicHeightNetworkImageView) view.findViewById(R.id.thumbnail);
                     ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                            ArticleListActivity.this, thumbnailView, "transitionphoto");
-
+                            ArticleListActivity.this, vh.thumbnailView, "transitionphoto");
                     Intent intent = new Intent(Intent.ACTION_VIEW,
                             ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition())));
-                    startActivity(intent, options.toBundle());
+                    ActivityCompat.startActivity
+                            (ArticleListActivity.this,intent, options.toBundle());
                 }
             });
             return vh;

@@ -9,18 +9,17 @@ import android.graphics.Color;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.graphics.Palette;
 import android.text.Html;
 import android.text.format.DateUtils;
 import android.text.method.LinkMovementMethod;
-import android.transition.Slide;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
+import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -84,12 +83,12 @@ public class ArticleDetailFragment extends Fragment implements
                 R.dimen.detail_card_top_margin);
         setHasOptionsMenu(true);
 
-        Slide slide = new Slide(Gravity.BOTTOM);
-        slide.addTarget(R.id.article_body);
-        slide.setInterpolator
-                (AnimationUtils.loadInterpolator(getActivity(), android.R.interpolator.linear_out_slow_in));
-        slide.setDuration(900);
-        getActivity().getWindow().setEnterTransition(slide);
+//        Slide slide = new Slide(Gravity.BOTTOM);
+//        slide.addTarget(R.id.article_body);
+//        slide.setInterpolator
+//                (AnimationUtils.loadInterpolator(getActivity(), android.R.interpolator.linear_out_slow_in));
+//        slide.setDuration(900);
+//        getActivity().getWindow().setEnterTransition(slide);
     }
 
     public ArticleDetailActivity getActivityCast() {
@@ -139,6 +138,21 @@ public class ArticleDetailFragment extends Fragment implements
         bindViews();
         updateStatusBar();
         return mRootView;
+    }
+
+
+    private void scheduleStartPostponedTransition(final View sharedElement) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            sharedElement.getViewTreeObserver().addOnPreDrawListener(
+                    new ViewTreeObserver.OnPreDrawListener() {
+                        @Override
+                        public boolean onPreDraw() {
+                            sharedElement.getViewTreeObserver().removeOnPreDrawListener(this);
+                            getActivity().startPostponedEnterTransition();
+                            return true;
+                        }
+                    });
+        }
     }
 
     private void updateStatusBar() {
@@ -215,6 +229,10 @@ public class ArticleDetailFragment extends Fragment implements
 
                         }
                     });
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                scheduleStartPostponedTransition(titleView);
+            }
+
         } else {
             mRootView.setVisibility(View.GONE);
             titleView.setText("N/A");
