@@ -2,5 +2,9 @@
     {
         "merged": "/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/build/intermediates/res/merged/debug/drawable-nodpi-v4/empty_detail.png",
         "source": "/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/src/main/res/drawable-nodpi/empty_detail.png"
+    },
+    {
+        "merged": "/home/dean/Documents/xyzreader/XYZReader/build/intermediates/res/merged/debug/drawable-nodpi-v4/empty_detail.png",
+        "source": "/home/dean/Documents/xyzreader/XYZReader/src/main/res/drawable-nodpi/empty_detail.png"
     }
 ]

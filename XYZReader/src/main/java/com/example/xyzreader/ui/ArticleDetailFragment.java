@@ -2,6 +2,7 @@ package com.example.xyzreader.ui;
 
 import android.app.Fragment;
 import android.app.LoaderManager;
+import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.graphics.Bitmap;
@@ -47,6 +48,7 @@ public class ArticleDetailFragment extends Fragment implements
     private ObservableScrollView mScrollView;
     private DrawInsetsFrameLayout mDrawInsetsFrameLayout;
     private ColorDrawable mStatusBarColorDrawable;
+    private static final String ARG_POSITION = "transition_string_position";
 
     private int mTopInset;
     //private View mPhotoContainerView;
@@ -54,6 +56,7 @@ public class ArticleDetailFragment extends Fragment implements
     private int mScrollY;
     private boolean mIsCard = false;
     private int mStatusBarFullOpacityBottom;
+    private int mPosition;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -62,9 +65,10 @@ public class ArticleDetailFragment extends Fragment implements
     public ArticleDetailFragment() {
     }
 
-    public static ArticleDetailFragment newInstance(long itemId) {
+    public static ArticleDetailFragment newInstance(long itemId, int position) {
         Bundle arguments = new Bundle();
         arguments.putLong(ARG_ITEM_ID, itemId);
+        arguments.putInt(ARG_POSITION, position);
         ArticleDetailFragment fragment = new ArticleDetailFragment();
         fragment.setArguments(arguments);
         return fragment;
@@ -78,10 +82,15 @@ public class ArticleDetailFragment extends Fragment implements
             mItemId = getArguments().getLong(ARG_ITEM_ID);
         }
 
+        if (getArguments().containsKey(ARG_POSITION)) {
+            mPosition = getArguments().getInt(ARG_POSITION);
+        }
+
         mIsCard = getResources().getBoolean(R.bool.detail_is_card);
         mStatusBarFullOpacityBottom = getResources().getDimensionPixelSize(
                 R.dimen.detail_card_top_margin);
         setHasOptionsMenu(true);
+
 
 //        Slide slide = new Slide(Gravity.BOTTOM);
 //        slide.addTarget(R.id.article_body);
@@ -131,28 +140,16 @@ public class ArticleDetailFragment extends Fragment implements
         });
 
         mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
-        //mPhotoContainerView = mRootView.findViewById(R.id.photo_container);
-
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mPhotoView.setTransitionName(getString(R.string.fragment_transition_name)
+                    + String.valueOf(mPosition));
+        }
+        
         mStatusBarColorDrawable = new ColorDrawable(0);
 
         bindViews();
         updateStatusBar();
         return mRootView;
-    }
-
-
-    private void scheduleStartPostponedTransition(final View sharedElement) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            sharedElement.getViewTreeObserver().addOnPreDrawListener(
-                    new ViewTreeObserver.OnPreDrawListener() {
-                        @Override
-                        public boolean onPreDraw() {
-                            sharedElement.getViewTreeObserver().removeOnPreDrawListener(this);
-                            getActivity().startPostponedEnterTransition();
-                            return true;
-                        }
-                    });
-        }
     }
 
     private void updateStatusBar() {
@@ -229,9 +226,6 @@ public class ArticleDetailFragment extends Fragment implements
 
                         }
                     });
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                scheduleStartPostponedTransition(titleView);
-            }
 
         } else {
             mRootView.setVisibility(View.GONE);
@@ -263,6 +257,11 @@ public class ArticleDetailFragment extends Fragment implements
         }
 
         bindViews();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mPhotoView = (ImageView) mRootView.findViewById(R.id.photo);
+            ((ArticleDetailActivity) getActivity()).scheduleStartPostponedTransition(mPhotoView);
+        }
     }
 
     @Override

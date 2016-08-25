@@ -1,5 +1,6 @@
 package com.example.xyzreader.ui;
 
+import android.app.ActivityOptions;
 import android.app.LoaderManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,17 +8,21 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.widget.TextView;
 
 import com.example.xyzreader.R;
@@ -132,12 +137,22 @@ public class ArticleListActivity extends ActionBarActivity implements
                 public void onClick(View view) {
                     DynamicHeightNetworkImageView thumbnailView
                             = (DynamicHeightNetworkImageView) view.findViewById(R.id.thumbnail);
-                    ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                            ArticleListActivity.this, vh.thumbnailView, "transitionphoto");
+
                     Intent intent = new Intent(Intent.ACTION_VIEW,
                             ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition())));
-                    ActivityCompat.startActivity
-                            (ArticleListActivity.this,intent, options.toBundle());
+
+                    Bundle options = null;
+                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+                        options = ActivityOptions.makeSceneTransitionAnimation(
+                                ArticleListActivity.this, thumbnailView,
+                                thumbnailView.findViewById(R.id.thumbnail).getTransitionName()).toBundle();
+                        Log.v("MAIN", view.findViewById(R.id.thumbnail).getTransitionName());
+                        startActivity(intent, options);
+                    }
+
+                    else{
+                        startActivity(intent);
+                    }
                 }
             });
             return vh;
@@ -158,6 +173,10 @@ public class ArticleListActivity extends ActionBarActivity implements
                     mCursor.getString(ArticleLoader.Query.THUMB_URL),
                     ImageLoaderHelper.getInstance(ArticleListActivity.this).getImageLoader());
             holder.thumbnailView.setAspectRatio(mCursor.getFloat(ArticleLoader.Query.ASPECT_RATIO));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                holder.thumbnailView
+                        .setTransitionName(getString(R.string.fragment_transition_name) + position);
+            }
         }
 
         @Override
@@ -178,4 +197,5 @@ public class ArticleListActivity extends ActionBarActivity implements
             subtitleView = (TextView) view.findViewById(R.id.article_subtitle);
         }
     }
+
 }

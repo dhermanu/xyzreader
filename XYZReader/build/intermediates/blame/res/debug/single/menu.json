@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/home/dean/Documents/xyzreader/XYZReader/build/intermediates/res/merged/debug/menu/main.xml",
+        "source": "/home/dean/Documents/xyzreader/XYZReader/src/main/res/menu/main.xml"
+    },
+    {
         "merged": "/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/build/intermediates/res/merged/debug/menu/main.xml",
         "source": "/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/src/main/res/menu/main.xml"
     }

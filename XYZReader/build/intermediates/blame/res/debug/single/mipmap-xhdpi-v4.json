@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/home/dean/Documents/xyzreader/XYZReader/build/intermediates/res/merged/debug/mipmap-xhdpi-v4/ic_launcher.png",
+        "source": "/home/dean/Documents/xyzreader/XYZReader/src/main/res/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
         "merged": "/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/build/intermediates/res/merged/debug/mipmap-xhdpi-v4/ic_launcher.png",
         "source": "/Users/dhermanu/Documents/nanodegree/xyzreader/XYZReader/src/main/res/mipmap-xhdpi/ic_launcher.png"
     }
