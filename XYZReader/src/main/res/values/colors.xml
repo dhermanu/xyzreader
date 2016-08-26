@@ -23,6 +23,7 @@
     <color name="theme_accent">#04561A</color>
     <color name="ltgray">#ffe0e0e0</color>
     <color name="black">#000000</color>
+    <color name="dark_grey">#6000</color>
     
     <color name="deep_orange_500">#FF5722</color>
     <color name="deep_orange_300">#FF8A65</color>

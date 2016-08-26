@@ -10,4 +10,6 @@
 
     <dimen name="toolbar_elevation">4dp</dimen>
 
+    <dimen name="card_margin">4dp</dimen>
+
 </resources>
